@@ -1,65 +1,63 @@
 # README
 # DB 設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 ## users table
 
-Things you may want to cover:
-| Column             | Type                | Options                 |
-|--------------------|---------------------|-------------------------|
-| email              | string              | null: false             |
-| password           | string              | null: false             |
-| name               | string              | null: false             |
-| nick_name          | string              | null: false             |
-| birthdayt          | string              | null: false             |
+| Column             | Type                | Options                  |
+|--------------------|---------------------|--------------------------|
+| email              | string              | null: false unique: true |
+| encrypted_password | string              | null: false              |
+| nick_name          | string              | null: false              |
+| date               | string              | null: false              |
+| family_name        | string              | null: false              |
+| first_name         | string              | null: false              |
+| family_name_kana   | string              | null: false              |
+| first_name_kana    | string              | null: false              |
 
-* Ruby version
-
-* System dependencies
 ### Association
 
-* Configuration
 * has_many :items
+* has_many :purchase
 
-* Database creation
 ## items table
 
-* Database initialization
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
 | product                             | string     | null: false       |
+| product_description                 | text       | null: false       |
 | category                            | string     | null: false       |
+| product_state                       | string     | null: false       |
+| delivery_charge_burden              | string     | null: false       |
+| regional_original_delivery          | string     | null: false       |
+| days_up_to_delivery                 | string     | null: false       |
 | price                               | string     | null: false       |
 | user                                | references | foreign_key: true |
 
-* How to run the test suite
+
 ### Association
 
-* Services (job queues, cache servers, search engines, etc.)
 - belongs_to :users
-
-* Deployment instructions
------------------------------------------------------------------------------------
-
-* ...
+- has_one :purchase
 
 ## purchase table
 
 | Column            | Type       | Options           |
 |-------------------|------------|-------------------|
-| card_information  | text       | null: false       |
-| expiration_date   | text       | null: false       |
-| security_code     | text       | null: false       |
+| users_id          | references | foreign_key: true |
+| expiration_date   | references | foreign_key: true |
 
 ### Association
 
 - has_one :delivery_address
+- belongs_to :items
+- belongs_to :users
 
 ## delivery_address table
 
 | Column        | Type       | Options           |
 |---------------|------------|-------------------|
+| postal_code   | string     | null: false       |
+| prefectures   | string     | null: false       |
 | city          | text       | null: false       |
 | block         | text       | null: false       |
 | building_name | text       | null: false       |

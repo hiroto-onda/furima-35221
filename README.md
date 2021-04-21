@@ -26,11 +26,11 @@
 |-------------------------------------|------------|-------------------|
 | product                             | string     | null: false       |
 | product_description                 | text       | null: false       |
-| category                            | string     | null: false       |
+| category_id                         | integer    | null: false       |
 | product_state_id                    | integer    | null: false       |
 | delivery_charge_burden_id           | integer    | null: false       |
 | regional_original_delivery_id       | integer    | null: false       |
-| days_up_to_delivery                 | string     | null: false       |
+| days_up_to_delivery_id              | integer    | null: false       |
 | price                               | integer    | null: false       |
 | user                                | references | foreign_key: true |
 
@@ -44,8 +44,8 @@
 
 | Column            | Type       | Options           |
 |-------------------|------------|-------------------|
-| users_id          | references | foreign_key: true |
-| item_id           | references | foreign_key: true |
+| users             | references | foreign_key: true |
+| item              | references | foreign_key: true |
 
 ### Association
 
@@ -55,16 +55,16 @@
 
 ## delivery_address table
 
-| Column        | Type       | Options           |
-|---------------|------------|-------------------|
-| postal_code   | string     | null: false       |
-| prefectures   | string     | null: false       |
-| city          | text       | null: false       |
-| block         | text       | null: false       |
-| building_name | text       | null: false       |
-| phone_number  | text       | null: false       |
+| Column                           | Type       | Options           |
+|----------------------------------|------------|-------------------|
+| postal_code                      | string     | null: false       |
+| regional_original_delivery_id    | integer    | null: false       |
+| city                             | string     | null: false       |
+| block                            | string     | null: false       |
+| building_name                    | text       |                   |
+| phone_number                     | string     | null: false       |
+| purchase                         | references | foreign_key: true |
 
 ### Association
 
 - belongs_to :purchase
-=======

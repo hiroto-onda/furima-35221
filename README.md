@@ -1,5 +1,4 @@
 # README
-
 # DB 設計
 
 ## users table
@@ -44,7 +43,7 @@
 
 | Column            | Type       | Options           |
 |-------------------|------------|-------------------|
-| users             | references | foreign_key: true |
+| user              | references | foreign_key: true |
 | item              | references | foreign_key: true |
 
 ### Association
@@ -61,7 +60,7 @@
 | regional_original_delivery_id    | integer    | null: false       |
 | city                             | string     | null: false       |
 | block                            | string     | null: false       |
-| building_name                    | text       |                   |
+| building_name                    | string     |                   |
 | phone_number                     | string     | null: false       |
 | purchase                         | references | foreign_key: true |
 

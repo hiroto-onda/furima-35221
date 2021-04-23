@@ -104,7 +104,7 @@ RSpec.describe User, type: :model do
           expect(@user.errors.full_messages).to include("First name kana is invalid")
         end
         it "first_name_kanaは全角かつカタカナでないと登録できない" do
-          @user.first_name_kana = "a"
+          @user.first_name_kana = "あ"
           @user.valid?
           expect(@user.errors.full_messages).to include("First name kana is invalid")
         end

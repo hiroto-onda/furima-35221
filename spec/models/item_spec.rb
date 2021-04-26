@@ -59,26 +59,30 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Price is invalid")
         end
-        it "販売価格が、¥300~¥9,999,999の間で無い時" do
+        it "販売価格が、¥300未満で無い時" do
           @item.price = 299
           @item.valid?
           expect(@item.errors.full_messages).to include("Price is invalid")
         end
-        it "販売価格が半角数字で無い時" do
+        it "販売価格が、¥10,000,000で無い時" do
+          @item.price = 10000000
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Price is invalid")
+        end
+        it "販売価格は全角文字では登録できないこと" do
           @item.price = '２'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Price is not a number", "Price is invalid")
+          expect(@item.errors.full_messages).to include("Price is invalid")
         end
-        it "販売価格が半角数字で無い時" do
+        it "販売価格は半角英数混合では登録できないこと" do
           @item.price = 'a1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Price is not a number", "Price is invalid")
+          expect(@item.errors.full_messages).to include("Price is invalid")
         end
-
-        it "販売価格が半角数字で無い時" do
+        it "販売価格は半角英語だけでは登録できないこと" do
           @item.price = 'a'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Price is not a number", "Price is invalid")
+          expect(@item.errors.full_messages).to include("Price is invalid")
         end
       end
     end

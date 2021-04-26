@@ -21,7 +21,6 @@ class Item < ApplicationRecord
     validates :delivery_charge_burden_id
     validates :regional_original_delivery_id
     validates :days_up_to_delivery_id
-    validates :price
   end
-  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
+  validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
 end

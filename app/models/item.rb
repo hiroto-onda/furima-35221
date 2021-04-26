@@ -11,8 +11,9 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :product
-    validates :product_description 
+    validates :product_description
     validates :price
+    validates :image
   end
   with_options numericality: { other_than: 1 } do
     validates :category_id

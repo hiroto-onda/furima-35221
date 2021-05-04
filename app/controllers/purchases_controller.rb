@@ -27,7 +27,7 @@ class PurchasesController < ApplicationController
   end
   
   def furima_params
-    params.require(:furima_address).permit( :postal_code, :regional_original_delivery_id, :city, :house_number, :building_name, :phone_number, :purchase, :user, :item).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    params.require(:furima_address).permit( :postal_code, :regional_original_delivery_id, :city, :house_number, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def pay_item

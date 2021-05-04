@@ -11,6 +11,10 @@ require 'rails_helper'
       it "正しい値が存在すれば購入できる" do
         expect(@furima_address).to be_valid
       end
+      it 'building_nameは空でも保存できること' do
+        @furima_address.building_name = '旭川市ハイツ'
+        expect(@furima_address).to be_valid
+      end
     end
 
     context '内容に問題がある場合' do
@@ -38,10 +42,6 @@ require 'rails_helper'
         @furima_address.house_number = ''
         @furima_address.valid?
         expect(@furima_address.errors.full_messages).to include("House number can't be blank")
-      end
-      it 'building_nameは空でも保存できること' do
-        @furima_address.building_name = '旭川市ハイツ'
-        expect(@furima_address).to be_valid
       end
       it 'userが紐付いていないと保存できないこと' do
         @furima_address.user_id = nil

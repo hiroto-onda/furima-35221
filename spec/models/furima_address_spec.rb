@@ -58,6 +58,11 @@ require 'rails_helper'
         @furima_address.valid?
         expect(@furima_address.errors.full_messages).to include("Phone number is invalid")
       end
+      it "tokenが空では登録できないこと" do
+        @furima_address.token = nil
+        @furima_address.valid?
+        expect(@furima_address.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end

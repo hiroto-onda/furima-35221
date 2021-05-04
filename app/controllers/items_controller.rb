@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_prototype, except: [:index, :new, :create]
+  before_action :set_item, except: [:index, :new, :create]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
@@ -21,7 +21,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
@@ -29,7 +28,6 @@ class ItemsController < ApplicationController
 
 
   def update
-     @item = Item.find(params[:id])
      if   @item.update(item_params)
        redirect_to item_path
     else
@@ -47,7 +45,7 @@ class ItemsController < ApplicationController
 
   private
 
-  def set_prototype
+  def set_item
     @item = Item.find(params[:id])
   end
 

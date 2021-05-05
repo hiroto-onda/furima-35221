@@ -16,7 +16,7 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        <span><%= @item.price %>円<br><%= @item.delivery_charge_burden.name %></span>
+        <span><%= @item.price %>円<br><% @item.delivery_charge_burden.name %></span>
       </span>
       <span class="item-postage">
         <%= @item.delivery_charge_burden.name %>

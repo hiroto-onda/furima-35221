@@ -211,6 +211,36 @@ a {
   margin-top: 20px;
 }
 
+.title {
+  text-align: center;
+}
+
+.index-available-card {
+  display: flex;
+  justify-content: center;
+  height: 35px;
+}
+
+.index-card-logo {
+  width: 40px;
+  margin: 5px 5px;
+}
+
+.mypage-btn {
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 0px;
+}
+
+.mypage-red-btn {
+  width: 100%;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  line-height: 48px;
+  font-size: 20px;
+  cursor: pointer;
+}
 /* //FURIMAの特徴 */
 
 /* 商品一覧 */
@@ -307,5 +337,6 @@ a {
 .star-count {
   font-size: 2vh;
 }
+
 
 /* //商品一覧 */

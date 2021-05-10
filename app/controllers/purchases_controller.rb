@@ -8,6 +8,7 @@ class PurchasesController < ApplicationController
       redirect_to root_path 
    end
   end
+
   
   def create
     @furima_address = FurimaAddress.new(furima_params)
@@ -33,9 +34,10 @@ class PurchasesController < ApplicationController
   def pay_item
     @furima_address = FurimaAddress.new(furima_params)
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    customer_token = current_user.card.customer_token
     Payjp::Charge.create(
       amount: @item[:price],
-      card: furima_params[:token],
+      customer: customer_token,
       currency: 'jpy'
     )
   end

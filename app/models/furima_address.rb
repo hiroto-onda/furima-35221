@@ -17,4 +17,3 @@ class FurimaAddress
     DeliveryAddress.create(postal_code: postal_code, regional_original_delivery_id: regional_original_delivery_id, city: city, house_number: house_number, building_name: building_name, phone_number: phone_number, purchase_id: furima.id)
   end
 end
-

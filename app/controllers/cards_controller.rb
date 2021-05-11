@@ -14,10 +14,10 @@ class CardsController < ApplicationController
       customer_token: customer.id,
       user_id: current_user.id
     )
-    if @card.save
-        @item = Item.find(params[:item_id])
+    if @card.save 
+        # @item = Item.find(params[:item_id])
         @furima_address = FurimaAddress.new
-        render 'purchases/index'
+        redirect_to root_path
     else
         redirect_to action: "new"
     end

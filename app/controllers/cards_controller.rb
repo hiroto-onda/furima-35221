@@ -15,7 +15,6 @@ class CardsController < ApplicationController
       user_id: current_user.id
     )
     if @card.save 
-        # @item = Item.find(params[:item_id])
         @furima_address = FurimaAddress.new
         redirect_to root_path
     else
